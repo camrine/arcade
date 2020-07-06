@@ -1,0 +1,19 @@
+var fields = Dictionary('Field Name 1',$feature.Fieldname1,
+                        'Field Name 2',$feature.Fieldname2, 
+                        'Field Name 3',$feature.Fieldname3)
+                        
+var fields = [Dictionary('fieldName', 'Field Name 1', 'fieldValue', $feature.Fieldname1), Dictionary('fieldName', 'FieldName2', 'fieldValue', $feature.Fieldname2), Dictionary('fieldName', 'Field Name 3', 'fieldValue', $feature.Fieldname3)]
+
+var popup = ''
+for(var f in fields){
+
+    if (IsNan(fields[f]['fieldValue'])== false && IsEmpty(fields[f]['fieldValue']) == false){
+        //For popups in webmaps
+        popup += Concatenate([fields[f]['fieldName'], ':', ' ', fields[f]['fieldValue'], '\n'], '');
+        //For popups or details panel in operations dashboard
+            //var fname = "<b>" + fields[f]['fieldName'] + "</b>"
+    //popup += Concatenate([fname, ': ', fields[f]['fieldValue']], '') + '<br/>';
+    }
+}
+
+return popup
